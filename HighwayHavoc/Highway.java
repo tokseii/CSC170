@@ -7,13 +7,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 
-public class MyWorld extends World
+public class Highway extends World
 {
     /**
      * Constructor for objects of class MyWorld.
      * 
      */
-    public MyWorld()
+    public Highway()
     {    
         super(400, 600, 1);
 
