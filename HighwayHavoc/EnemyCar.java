@@ -13,16 +13,22 @@ public class EnemyCar extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    public EnemyCar()
+    public EnemyCar(int speed)
     {
+        this.speed = speed;
         int randomNumber = (Greenfoot.getRandomNumber(3) + 1);
         String carChosen = ("car0"+randomNumber+"-n.png");
         setImage(carChosen);
-        getImage().rotate(180);
+        //getImage().rotate(180);
     }
+    
+    private int speed;
     
     public void act()
     {
-        // Add your action code here.
+        setLocation(getX(), getY() + speed);
+        if (getY() == getWorld().getHeight() - 1){
+            getWorld().removeObject(this);
+        }
     }
 }

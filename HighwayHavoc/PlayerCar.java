@@ -37,5 +37,17 @@ public class PlayerCar extends Actor
             } else if (!Greenfoot.isKeyDown("right")) {
             rightHeld = false;
         }
+        
+        EnemyCar enemy = (EnemyCar) getOneIntersectingObject(EnemyCar.class);
+        if (enemy != null){
+            getWorld().removeObject(enemy);
+            ((Highway) getWorld()).loseLife();
+        }
+        
+        Coin coin = (Coin) getOneIntersectingObject(Coin.class);
+        if (coin != null){
+            getWorld().removeObject(coin);
+            ((Highway) getWorld()).addScore();
+        }
     }
 }
