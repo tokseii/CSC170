@@ -17,7 +17,7 @@ public class Highway extends World
     private int score = 0;
     private int lives = 3;
     private int spawnTimer = 0;
-    private int targetScore = 15;
+    private int targetScore = 20;
     
     private int carSpawnWaitTime = 60;
     private int speedLevel = 3;
@@ -40,9 +40,9 @@ public class Highway extends World
         setBackground(background);
 
         addObject(new PlayerCar(), 200, 500);
-        //addObject(new EnemyCar(3), 125, 100);
-        //addObject(new EnemyCar(3), 200, 150); 
-        //addObject(new Coin(2), 285, 300);
+        addObject(new EnemyCar(3), 125, 100);
+        addObject(new EnemyCar(3), 200, 150); 
+        addObject(new Coin(2), 285, 300);
         prepare();
     }
     
