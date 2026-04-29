@@ -41,12 +41,14 @@ public class PlayerCar extends Actor
         EnemyCar enemy = (EnemyCar) getOneIntersectingObject(EnemyCar.class);
         if (enemy != null){
             getWorld().removeObject(enemy);
+            Greenfoot.playSound("car_hit.wav");
             ((Highway) getWorld()).loseLife();
         }
         
         Coin coin = (Coin) getOneIntersectingObject(Coin.class);
         if (coin != null){
             getWorld().removeObject(coin);
+            Greenfoot.playSound("coin_pickup.wav");
             ((Highway) getWorld()).addScore();
         }
     }

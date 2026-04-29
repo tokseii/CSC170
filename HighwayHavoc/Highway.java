@@ -17,6 +17,11 @@ public class Highway extends World
     private int score = 0;
     private int lives = 3;
     private int spawnTimer = 0;
+    private int targetScore = 15;
+    
+    private int carSpawnWaitTime = 60;
+    private int speedLevel = 3;
+    private int difficultyTimer = 0;
     
     public void loseLife(){
         lives -= 1;
@@ -41,24 +46,47 @@ public class Highway extends World
         prepare();
     }
     
+    private void checkGameState(){
+        if (lives <= 0){
+            showText("Game Over", 200, 300);
+            Greenfoot.stop();
+        }
+        if (score >= targetScore){
+            showText("You Win", 200, 300);
+            Greenfoot.stop();
+        }
+    }
+    
     public void act(){
         showText("Score: " + score, 60, 20);
         showText("Lives: " + lives, 340, 20);
         
         spawnTimer += 1;
+        difficultyTimer += 1;
         
-        if (spawnTimer >= 60){
+        if (difficultyTimer >= 120){
+            difficultyTimer = 0;
+            if (speedLevel < 8){
+                speedLevel += 1;
+            }
+            if (carSpawnWaitTime > 20){
+                carSpawnWaitTime -= 5;
+            }
+        }
+        
+        if (spawnTimer >= carSpawnWaitTime){
             spawnTimer = 0;
             spawnEnemy();
             spawnCoin();
         }
+        checkGameState();
     }
     
     private int[] lanes = {110, 200, 295};
     
     private void spawnEnemy(){
         int lane = lanes[Greenfoot.getRandomNumber(3)];
-        addObject(new EnemyCar(3), lane, 0);
+        addObject(new EnemyCar(speedLevel), lane, 0);
     }
     
     private void spawnCoin(){
