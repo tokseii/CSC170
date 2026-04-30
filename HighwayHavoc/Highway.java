@@ -64,7 +64,7 @@ public class Highway extends World
         spawnTimer += 1;
         difficultyTimer += 1;
         
-        if (difficultyTimer >= 120){
+        if (difficultyTimer >= 650){
             difficultyTimer = 0;
             if (speedLevel < 8){
                 speedLevel += 1;
